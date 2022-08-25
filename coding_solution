@@ -1,0 +1,39 @@
+class Planet:
+    def __init__(self,planet,atmospheric_gases,moons,rings):
+        self.palnent= planet
+        self.atmospheric_gases = atmospheric_gases
+        self.moons = moons
+        self.rings = rings
+obj1 = Planet("mercury",[],0,0)
+
+obj2 = Planet("venus",["carbon_diaoxide","nitrogen"],0,0)
+
+obj3 = Planet("earth",["nitrogen","oxygen"],1,0)
+obj4 = Planet("jupiter",["hydrogen","helium"],79,1)
+obj5 = Planet("saturn",["hydrogen","helium"],83,1)
+obj6 = Planet("uranus",["hydrogen","helium","methane"],27,1)
+
+list = [obj1,obj2 ,obj3 ,obj4 ,obj5 ,obj6]
+
+def count_of_moons(list):
+    count = 0
+    for obj in list:
+        if obj.rings:
+            count = obj.moons + count
+    return count
+print(count_of_moons(list))   
+
+def gas_and_max_planet(list):
+    d={}
+    for obj in list:
+        
+        for gas in obj.atmospheric_gases:
+            d[gas]= d.get(gas,0) +1
+        
+    sorted_d = sorted(d.values())
+    
+    for item in d.keys():
+        if d[item]==sorted_d[-1]:
+            print(item)
+gas_and_max_planet(list)
+        
